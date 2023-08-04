@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Covid19Controller;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MyProfileController;
 
@@ -107,3 +108,5 @@ Route::get("/newgallery", [MyProfileController::class, "gallery"]);
 Route::get("/newgallery/ant", [MyProfileController::class, "ant"]);
 Route::get("/newgallery/bird", [MyProfileController::class, "bird"]);
 Route::get("/newgallery/cat", [MyProfileController::class, "cat"]);
+
+Route::get('/covid19', [ Covid19Controller::class,"index" ]);
