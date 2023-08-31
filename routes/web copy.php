@@ -16,7 +16,6 @@ use App\Http\Controllers\StaffController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::get('/', function () {
     return view('welcome');
 });
@@ -48,48 +47,37 @@ Route::get("/gallery/ant", function () {
     $ant = "https://cdn3.movieweb.com/i/article/Oi0Q2edcVVhs4p1UivwyyseezFkHsq/1107:50/Ant-Man-3-Talks-Michael-Douglas-Update.jpg";
     return view("test/ant", compact("ant"));
 });
-
 Route::get("/gallery/bird", function () {
     $bird = "https://images.indianexpress.com/2021/03/falcon-anthony-mackie-1200.jpg";
     return view("test/bird", compact("bird"));
 });
-
 Route::get("/gallery/cat", function () {
     $cat = "http://www.onyxtruth.com/wp-content/uploads/2017/06/black-panther-movie-onyx-truth.jpg";
     return view("test/cat", compact("cat"));
 });
-
-Route::middleware(['auth', 'role:admin,teacher'])->group(function () {
-    Route::get("/teacher", function () {
-        return view("teacher");
-    });
-    Route::get("/student", function () {
-        return view("student");
-    });
+Route::get("/teacher", function () {
+    return view("teacher");
 });
-
+Route::get("/student", function () {
+    return view("student");
+});
 Route::get("/theme", function () {
     return view("theme");
 });
-
 // Route Template Inheritance
 Route::get("/teacher/inheritance", function () {
     return view("teacher-inheritance");
 });
-
 Route::get("/student/inheritance", function () {
     return view("student-inheritance");
 });
-
 // Route Template Component
 Route::get("/teacher/component", function () {
     return view("teacher-component");
 });
-
 Route::get("/student/component", function () {
     return view("student-component");
 });
-
 Route::get('/tables', function () {
     return view('tables');
 });
@@ -119,10 +107,3 @@ Route::get('/covid19', [Covid19Controller::class, "index"]);
 Route::resource('/product', ProductController::class);
 
 Route::resource('/staff', StaffController::class);
-
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
-
-require __DIR__ . '/auth.php';
