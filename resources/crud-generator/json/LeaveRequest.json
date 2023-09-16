@@ -1,0 +1,28 @@
+{
+    "fields": [
+        { "name": "user_id", "type": "integer" },
+        {
+            "name": "leave_type_name",
+            "type": "select",
+            "options": {
+                "sick": "sick",
+                "personal": "personal",
+                "vacation": "vacation"
+            }
+        },
+        { "name": "start_date", "type": "date" },
+        { "name": "end_date", "type": "date" },
+        { "name": "total_leave", "type": "integer" },
+        {
+            "name": "status",
+            "type": "select",
+            "options": {
+                "pending": "pending",
+                "approved": "approved",
+                "rejected": "rejected"
+            }
+        },
+        { "name": "comments", "type": "text" },
+        { "name": "approver_id", "type": "integer" }
+    ]
+}

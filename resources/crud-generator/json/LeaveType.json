@@ -1,0 +1,14 @@
+{
+    "fields": [
+        {
+            "name": "leave_type_name",
+            "type": "select",
+            "options": {
+                "sick": "sick",
+                "personal": "personal",
+                "vacation": "vacation"
+            }
+        },
+        { "name": "max_leave_per_year", "type": "integer" }
+    ]
+}
