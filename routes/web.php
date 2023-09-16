@@ -9,6 +9,9 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;  //เขียนเพิ่ม
 use App\Http\Controllers\UserController;  //เขียนเพิ่ม
 use App\Http\Controllers\VehicleController;  //เขียนเพิ่ม
+use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\QuotationController;
+use App\Http\Controllers\QuotationDetailController;
 
 /*
 |--------------------------------------------------------------------------
@@ -143,3 +146,25 @@ Route::resource('post', PostController::class);
 Route::resource('profile', ProfileController::class);
 Route::resource('user', UserController::class);
 Route::resource('vehicle', VehicleController::class);
+
+// Route::resource('customer', 'CustomerController');
+// Route::resource('quotation', 'QuotationController');
+// Route::resource('quotation-detail', 'QuotationDetailController');
+
+//week10
+    Route::middleware(['auth'])->group(function () {
+    Route::resource('customer', CustomerController::class);
+    Route::get('quotation/{id}/pdf', [QuotationController::class, 'pdf']);
+    Route::resource('quotation', QuotationController::class);
+    Route::resource('quotation-detail', QuotationDetailController::class);
+});
+
+use Barryvdh\DomPDF\Facade\Pdf;
+
+Route::get('/test/pdf', function () {
+    $a = "hello";
+    $b = "world";
+    $c = "ทดสอบภาษาไทย";
+    $pdf = Pdf::loadView('testpdf', compact('a', 'b', 'c'));
+    return $pdf->stream();
+});

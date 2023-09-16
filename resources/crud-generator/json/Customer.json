@@ -1,0 +1,11 @@
+{
+    "fields": [
+        { "name": "name", "type": "string" },
+        { "name": "organization_name", "type": "string" },
+        { "name": "address", "type": "text" },
+        { "name": "phone", "type": "string" },
+        { "name": "email", "type": "string" },
+        { "name": "remark", "type": "text" },
+        { "name": "user_id", "type": "integer" }
+    ]
+}

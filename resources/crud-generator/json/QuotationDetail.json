@@ -1,0 +1,10 @@
+{
+    "fields": [        
+        { "name": "quotation_id", "type": "integer" },
+        { "name": "product_id", "type": "integer" },
+        { "name": "amount", "type": "integer" },
+        { "name": "price", "type": "float" },
+        { "name": "total", "type": "float" },
+        { "name": "remark", "type": "text" }
+    ]
+}

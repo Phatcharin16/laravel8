@@ -1,0 +1,11 @@
+{
+    "fields": [        
+        { "name": "customer_id", "type": "integer" },
+        { "name": "user_id", "type": "integer" },
+        { "name": "vat_percent", "type": "float" },
+        { "name": "vat", "type": "float" },
+        { "name": "sub_total", "type": "float" },
+        { "name": "net_total", "type": "float" },        
+        { "name": "remark", "type": "text" }
+    ]
+}
