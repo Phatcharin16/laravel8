@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MyProfileController;
 use App\Http\Controllers\Covid19Controller;
@@ -12,6 +13,7 @@ use App\Http\Controllers\VehicleController;  //เขียนเพิ่ม
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\LeaveRequestController;
 use App\Http\Controllers\LeaveTypeController;
+use App\Http\Controllers\MovieController;
 use App\Http\Controllers\QuotationController;
 use App\Http\Controllers\QuotationDetailController;
 
@@ -154,7 +156,7 @@ Route::resource('vehicle', VehicleController::class);
 // Route::resource('quotation-detail', 'QuotationDetailController');
 
 //week10
-    Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth'])->group(function () {
     Route::resource('customer', CustomerController::class);
     Route::get('quotation/{id}/pdf', [QuotationController::class, 'pdf']);
     Route::resource('quotation', QuotationController::class);
@@ -174,11 +176,11 @@ Route::get('/test/pdf', function () {
 // Route::resource('leave-request', 'LeaveRequestController');
 // Route::resource('leave-type', 'LeaveTypeController');
 
-        Route::middleware(['auth'])->group(function () {
-        Route::middleware(['role:admin,guest'])->group(function () {
+Route::middleware(['auth'])->group(function () {
+    Route::middleware(['role:admin,guest'])->group(function () {
         Route::resource('leave-request', LeaveRequestController::class)->except(['edit', 'update']);
     });
-        Route::middleware(['role:admin'])->group(function () {
+    Route::middleware(['role:admin'])->group(function () {
         Route::resource('leave-request', LeaveRequestController::class)->only(['edit', 'update']);
         Route::resource('leave-type', LeaveTypeController::class);
         Route::get("dashboard-leave", function () {
@@ -186,3 +188,17 @@ Route::get('/test/pdf', function () {
         });
     });
 });
+
+// Route::resource('movie', 'MovieController');
+// Route::resource('category', 'CategoryController');
+
+Route::resource('movie', MovieController::class);
+Route::resource('category', CategoryController::class);
+Route::get("movie-livewire", function () {
+    return view("movie-livewire");
+});
+
+Route::get("counter",function(){
+    return view("counter");
+});
+
